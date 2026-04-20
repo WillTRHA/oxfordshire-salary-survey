@@ -525,53 +525,45 @@
   <!-- ═══════════════════════════════════════════
        SCREEN 0 — GDPR / PRIVACY NOTICE
   ════════════════════════════════════════════ -->
-  <div class="screen active" id="screen-gdpr">
+    <div class="screen active" id="screen-gdpr">
 
-    <h2 class="section-title">Before you begin</h2>
-    <p class="section-desc">Please read the following before completing this survey.</p>
+    <h2 class="section-title">Welcome</h2>
 
-    <div class="gdpr-card">
-      <div class="gdpr-notice-label">Privacy notice</div>
-      <h3>How we use your data</h3>
+    <div class="confidentiality-box">
+      <strong>Strictly confidential</strong> — All data submitted is treated in strict confidence and will only ever be published in aggregate form. Individual organisation data will never be identifiable in the published report.
+    </div>
 
-      <p><strong>Who is collecting this data?</strong><br>
-      This survey is conducted by <strong>Allen Associates</strong>, [registered address], [company number]. For data queries contact <a href="mailto:willc@thehragency.co.uk">willc@thehragency.co.uk</a>.</p>
+    <div class="card" style="margin-bottom:1.2rem;">
+      <p style="font-size:0.92rem; font-weight:500; color:var(--ink); margin-bottom:0.75rem;">Who should complete this survey?</p>
+      <p style="font-size:0.88rem; color:var(--muted); line-height:1.7; margin-bottom:0;">This survey is designed for <strong>HR Directors, Finance Directors, MDs, CEOs, or anyone responsible for setting or approving salaries</strong> within their organisation. If that's more than one person at your company, only one response per organisation is needed.</p>
+    </div>
 
-      <p><strong>What we collect</strong><br>
-      This survey collects two types of information:</p>
-      <ul>
-        <li><strong>Survey data</strong> — organisational profile (sector, size, location), salary and role information, and market conditions responses. This data is not linked to you personally and is processed in aggregate.</li>
-        <li><strong>Contact details</strong> (optional, screen 4) — name, organisation name, and email address, collected solely to send you the published report. These are stored separately from your survey responses.</li>
-      </ul>
-
-      <p><strong>Legal basis for processing</strong><br>
-      Survey data is processed under <em>legitimate interests</em> — producing an accurate local salary benchmarking report that benefits Oxfordshire employers, including you as a respondent. Contact details are processed on the basis of your explicit consent given at the point of submission.</p>
-
-      <p><strong>How long we keep your data</strong><br>
-      Survey response data will be retained until 31 December 2027, after which it will be securely deleted. Contact details will be deleted once the report has been distributed, or within 12 months of collection, whichever is sooner.</p>
-
-      <p><strong>Who sees your data</strong><br>
-      Aggregated, anonymised findings will be published in the Oxfordshire Salary Guide 2026. No individual organisation's data will be identifiable in the published report. Your contact details will not be shared with any third party.</p>
-
-      <p><strong>Your rights</strong><br>
-      Under UK GDPR you have the right to access, correct, or request deletion of your personal data at any time. To exercise these rights, contact <a href="mailto:willc@thehragency.co.uk">willc@thehragency.co.uk</a>. You also have the right to lodge a complaint with the Information Commissioner's Office (ICO) at <a href="https://ico.org.uk" target="_blank">ico.org.uk</a>.</p>
-
-      <p style="margin-bottom:0;"><a href="https://www.allen-associates.co.uk/privacy-policy" target="_blank">Read the full privacy policy →</a></p>
+    <div class="card" style="margin-bottom:1.2rem;">
+      <p style="font-size:0.92rem; font-weight:500; color:var(--ink); margin-bottom:0.75rem;">What does the survey cover?</p>
+      <p style="font-size:0.88rem; color:var(--muted); line-height:1.7; margin-bottom:0.5rem;">Allen Associates has been placing exceptional candidates across Oxfordshire for over 25 years. This survey covers the four functions we specialise in:</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-bottom:0.5rem;">
+        <div style="background:var(--teal-light); border:1px solid var(--teal-mid); border-radius:6px; padding:0.5rem 0.75rem; font-size:0.85rem; font-weight:500; color:var(--teal);">PA &amp; Administration</div>
+        <div style="background:var(--teal-light); border:1px solid var(--teal-mid); border-radius:6px; padding:0.5rem 0.75rem; font-size:0.85rem; font-weight:500; color:var(--teal);">Human Resources</div>
+        <div style="background:var(--teal-light); border:1px solid var(--teal-mid); border-radius:6px; padding:0.5rem 0.75rem; font-size:0.85rem; font-weight:500; color:var(--teal);">Finance</div>
+        <div style="background:var(--teal-light); border:1px solid var(--teal-mid); border-radius:6px; padding:0.5rem 0.75rem; font-size:0.85rem; font-weight:500; color:var(--teal);">Marketing</div>
+      </div>
+      <p style="font-size:0.85rem; color:var(--muted); margin-bottom:0;">Your data helps us build the most accurate picture of Oxfordshire salaries — and the full report helps you benchmark against it. The survey takes around 10 minutes to complete.</p>
     </div>
 
     <label class="consent-row" id="consent-row">
       <input type="checkbox" id="consent-check">
-      <span class="consent-text">I have read the privacy notice above and understand how my data will be used. I consent to my contact details (if provided) being used to send me the Oxfordshire Salary Guide 2026.</span>
+      <span class="consent-text">I confirm I have read the <a href="#" onclick="openPrivacyModal(); return false;" style="color:var(--teal);">privacy notice</a> and understand how my data will be used. I consent to my contact details (if provided) being used to send me the Oxfordshire Salary Guide 2026.</span>
     </label>
 
     <div class="field-error" id="err-consent" style="margin-bottom:0.75rem;"></div>
 
     <div class="btn-row">
-      <button class="btn btn-primary" id="consent-btn" onclick="submitConsent()">Begin survey →</button>
+      <button class="btn btn-primary" onclick="submitConsent()">Begin survey →</button>
     </div>
 
     <div class="footer-links" style="padding-top:1.5rem;">
-      <a href="https://www.allen-associates.co.uk/privacy-policy" target="_blank">Privacy policy</a> &nbsp;·&nbsp;
+      <a href="#" onclick="openPrivacyModal(); return false;">Privacy notice</a> &nbsp;·&nbsp;
+      <a href="https://www.allen-associates.co.uk/privacy-policy" target="_blank">Full privacy policy</a> &nbsp;·&nbsp;
       <a href="https://ico.org.uk" target="_blank">ICO</a>
     </div>
 
@@ -724,7 +716,7 @@
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.75rem; margin-top:1.5rem;">
           <div>
             <div style="font-weight:500; font-size:0.9rem;" id="role-section-title">Roles in this function</div>
-            <div style="font-size:0.78rem; color:var(--muted);">Add up to 3 roles</div>
+            <div style="font-size:0.78rem; color:var(--muted);">Add as many roles as you like</div>
           </div>
           <div class="role-chips" id="role-chips"></div>
         </div>
@@ -733,8 +725,12 @@
 
           <div class="q-block">
             <label class="q-label"><span class="q-num">A.</span> Job title <span class="q-required">*</span></label>
-            <span class="q-hint">Use the internal job title as it appears on the contract</span>
-            <input type="text" id="r-title" placeholder="e.g. HR Advisor">
+            <span class="q-hint">Select from the list, or choose 'Other' to specify</span>
+            <select id="r-title-select" onchange="onTitleSelect('r')">
+              <option value="">Select job title…</option>
+              <option>Loading…</option>
+            </select>
+            <input type="text" id="r-title" placeholder="Please specify job title" style="margin-top:0.5rem; display:none;">
             <div class="field-error" id="err-r-title"></div>
           </div>
 
@@ -862,12 +858,9 @@
           <label class="q-label">Function <span class="q-required">*</span></label>
           <select id="or-function">
             <option value="">Select function…</option>
-            <option>IT / Technology</option>
-            <option>Operations</option>
+              <option>Operations</option>
             <option>Sales / Business Development</option>
-            <option>Engineering / Technical</option>
-            <option>Legal</option>
-            <option>Customer Service</option>
+                <option>Customer Service</option>
             <option>Other</option>
           </select>
           <div class="field-error" id="err-or-function"></div>
@@ -970,10 +963,8 @@
           <label class="opt-item"><input type="checkbox" name="hiring_fns" value="HR"> HR</label>
           <label class="opt-item"><input type="checkbox" name="hiring_fns" value="Finance"> Finance</label>
           <label class="opt-item"><input type="checkbox" name="hiring_fns" value="Marketing"> Marketing</label>
-          <label class="opt-item"><input type="checkbox" name="hiring_fns" value="IT / Technology"> IT / Technology</label>
           <label class="opt-item"><input type="checkbox" name="hiring_fns" value="Operations"> Operations</label>
           <label class="opt-item"><input type="checkbox" name="hiring_fns" value="Sales / BD"> Sales / BD</label>
-          <label class="opt-item"><input type="checkbox" name="hiring_fns" value="Engineering"> Engineering</label>
           <label class="opt-item"><input type="checkbox" name="hiring_fns" value="None / not planning"> None / not planning</label>
         </div>
       </div>
@@ -1033,6 +1024,55 @@
           <label class="opt-item"><input type="checkbox" name="benefits" value="Profit share / equity"> Profit share / equity</label>
           <label class="opt-item"><input type="checkbox" name="benefits" value="On-site parking"> On-site parking</label>
           <label class="opt-item"><input type="checkbox" name="benefits" value="None of the above"> None of the above</label>
+        </div>
+      </div>
+
+
+      <div class="q-block">
+        <label class="q-label"><span class="q-num">Q17.</span> When does your organisation typically conduct its annual pay review?</label>
+        <span class="q-hint">Single select</span>
+        <div class="options-grid">
+          <label class="opt-item"><input type="radio" name="pay_review_month" value="January"> January</label>
+          <label class="opt-item"><input type="radio" name="pay_review_month" value="February"> February</label>
+          <label class="opt-item"><input type="radio" name="pay_review_month" value="March"> March</label>
+          <label class="opt-item"><input type="radio" name="pay_review_month" value="April"> April</label>
+          <label class="opt-item"><input type="radio" name="pay_review_month" value="May"> May</label>
+          <label class="opt-item"><input type="radio" name="pay_review_month" value="June"> June</label>
+          <label class="opt-item"><input type="radio" name="pay_review_month" value="July"> July</label>
+          <label class="opt-item"><input type="radio" name="pay_review_month" value="August"> August</label>
+          <label class="opt-item"><input type="radio" name="pay_review_month" value="September"> September</label>
+          <label class="opt-item"><input type="radio" name="pay_review_month" value="October"> October</label>
+          <label class="opt-item"><input type="radio" name="pay_review_month" value="November"> November</label>
+          <label class="opt-item"><input type="radio" name="pay_review_month" value="December"> December</label>
+          <label class="opt-item"><input type="radio" name="pay_review_month" value="No fixed date"> No fixed date</label>
+          <label class="opt-item"><input type="radio" name="pay_review_month" value="Varies by department"> Varies by department</label>
+        </div>
+      </div>
+
+      <div class="q-block">
+        <label class="q-label"><span class="q-num">Q18.</span> Which flexible working arrangements do you currently offer?</label>
+        <span class="q-hint">Select all that apply</span>
+        <div class="options-grid">
+          <label class="opt-item"><input type="checkbox" name="flex_working" value="Hybrid working"> Hybrid working</label>
+          <label class="opt-item"><input type="checkbox" name="flex_working" value="Fully remote"> Fully remote</label>
+          <label class="opt-item"><input type="checkbox" name="flex_working" value="Flexible start / finish times"> Flexible start / finish</label>
+          <label class="opt-item"><input type="checkbox" name="flex_working" value="Compressed hours"> Compressed hours</label>
+          <label class="opt-item"><input type="checkbox" name="flex_working" value="Part-time options"> Part-time options</label>
+          <label class="opt-item"><input type="checkbox" name="flex_working" value="Job share"> Job share</label>
+          <label class="opt-item"><input type="checkbox" name="flex_working" value="Annualised hours"> Annualised hours</label>
+          <label class="opt-item"><input type="checkbox" name="flex_working" value="None currently"> None currently</label>
+        </div>
+      </div>
+
+      <div class="q-block">
+        <label class="q-label"><span class="q-num">Q19.</span> For roles that are hybrid, what is the typical office attendance expectation?</label>
+        <div class="options-grid single-col">
+          <label class="opt-item"><input type="radio" name="hybrid_days" value="1 day per week in office"> 1 day per week in office</label>
+          <label class="opt-item"><input type="radio" name="hybrid_days" value="2 days per week in office"> 2 days per week in office</label>
+          <label class="opt-item"><input type="radio" name="hybrid_days" value="3 days per week in office"> 3 days per week in office</label>
+          <label class="opt-item"><input type="radio" name="hybrid_days" value="4 days per week in office"> 4 days per week in office</label>
+          <label class="opt-item"><input type="radio" name="hybrid_days" value="Varies by role"> Varies by role</label>
+          <label class="opt-item"><input type="radio" name="hybrid_days" value="Not applicable — we don't offer hybrid"> Not applicable</label>
         </div>
       </div>
 
@@ -1113,6 +1153,25 @@
 
 </div><!-- /app-shell -->
 
+<!-- Privacy modal -->
+<div class="privacy-modal-overlay" id="privacy-modal">
+  <div class="privacy-modal-box">
+    <h3>Privacy notice — how we use your data</h3>
+    <p><strong>Who is collecting this data?</strong><br>
+    This survey is conducted by Allen Associates, Sandford Gate, East Point Business Park, Oxford OX4 6LB. Company Registration Number: 4148972. For data queries contact <a href="mailto:willc@thehragency.co.uk">willc@thehragency.co.uk</a>.</p>
+    <p><strong>What we collect</strong></p>
+    <ul>
+      <li><strong>Survey data</strong> — organisational profile, salary and role information, and market conditions responses. Processed in aggregate only — never linked to you personally.</li>
+      <li><strong>Contact details</strong> (optional) — name, organisation, and email, used solely to send you the published report. Stored separately from your survey responses.</li>
+    </ul>
+    <p><strong>Legal basis</strong><br>Survey data is processed under legitimate interests. Contact details are processed on the basis of your explicit consent.</p>
+    <p><strong>Retention</strong><br>Survey data retained until 31 December 2027, then securely deleted. Contact details deleted once the report has been distributed or within 12 months of collection.</p>
+    <p><strong>Your rights</strong><br>Under UK GDPR you have the right to access, correct, or request deletion of your data. Contact <a href="mailto:willc@thehragency.co.uk">willc@thehragency.co.uk</a>. You may also complain to the ICO at <a href="https://ico.org.uk" target="_blank">ico.org.uk</a>.</p>
+    <p><a href="https://www.allen-associates.co.uk/privacy-policy" target="_blank">Read the full privacy policy →</a></p>
+    <button class="btn btn-primary privacy-close-btn" onclick="closePrivacyModal()">Close</button>
+  </div>
+</div>
+
 <!-- Admin trigger — hidden in bottom corner -->
 <div class="admin-link" onclick="openAdminPrompt()">admin</div>
 
@@ -1170,6 +1229,100 @@ try {
   const c = localStorage.getItem('osg_contacts');
   if (c) contacts = JSON.parse(c);
 } catch(e) {}
+
+
+// ─── JOB TITLE DROPDOWN ───────────────────────────────────────────────────────
+const JOB_TITLES = {
+  pa: [
+    'Receptionist','Administrator','Administration Manager',
+    'Secretary — General','Secretary — Team','Secretary — Medical','Secretary — Legal',
+    'PA — Junior','PA','PA — Board Level','Executive Assistant','Office Manager',
+    'Facilities Assistant','Facilities Manager',
+    'Operations Assistant','Operations Co-ordinator','Operations Manager','Operations Director',
+    'Project Administrator','Project Co-ordinator','Project Manager',
+    'Events Assistant','Events Co-ordinator','Events Manager',
+    'Other (please specify)'
+  ],
+  hr: [
+    'HR Assistant / Administrator','HR Co-ordinator / Junior Advisor','HR Advisor / Officer',
+    'HR Manager','HR Business Partner','HR Director','Head of HR',
+    'People & Culture Manager','People & Culture Director',
+    'L&D Assistant / Administrator','L&D Advisor / Officer','L&D Manager','L&D Director',
+    'Recruitment / Talent Assistant','Recruitment Co-ordinator',
+    'Recruitment / Talent Advisor','Recruitment / Talent Manager','Head of Talent Acquisition',
+    'Reward & Benefits Analyst','Reward & Benefits Manager',
+    'Management Information Analyst','Management Information Manager',
+    'Employee Relations Officer / Advisor','Employee Relations Manager',
+    'EDI Consultant','EDI Manager',
+    'Change Management Consultant','Change Management Manager',
+    'Other (please specify)'
+  ],
+  finance: [
+    'Finance Administrator / Assistant','Senior Finance Administrator / Assistant',
+    'Finance Manager','Finance Director','Group Finance Director',
+    'Financial Analyst','Financial Controller',
+    'Part-Qualified Accountant','Company Accountant','Management Accountant','Group Accountant',
+    'Audit Manager','Tax Assistant','Tax Accountant',
+    'Credit Controller','Credit Control Manager',
+    'Payroll Assistant','Payroll Manager',
+    'Purchase Ledger Clerk','Purchase Ledger Manager',
+    'CFO / Chief Financial Officer',
+    'Other (please specify)'
+  ],
+  marketing: [
+    'Marketing Assistant','Marketing Co-ordinator','Marketing Executive',
+    'Marketing Manager','Senior Marketing Manager','Marketing Director','Head of Marketing',
+    'Digital Marketing Executive','Digital Marketing Manager',
+    'Social Media Executive','Social Media Manager',
+    'Content Executive','Content Manager',
+    'Internal Communications Assistant','Internal Communications Executive','Internal Communications Manager',
+    'PR Executive','PR Manager',
+    'Customer Insight Executive','Customer Insight Manager',
+    'Data Analyst','Business Analyst',
+    'Market Research Co-ordinator','Market Research Executive','Market Research Manager',
+    'CRM Manager',
+    'Sales Administrator','Sales Executive','Sales Manager','Sales Director',
+    'Account Executive','Account Manager','Senior Account Manager','Account Director',
+    'Product Manager','Channel Marketing Manager',
+    'Client Services Executive','Client Services Manager','Client Services Director',
+    'Other (please specify)'
+  ]
+};
+
+function populateTitleDropdown(key) {
+  const sel = document.getElementById('r-title-select');
+  const titles = JOB_TITLES[key] || [];
+  sel.innerHTML = '<option value="">Select job title…</option>' +
+    titles.map(t => `<option value="${t}">${t}</option>`).join('');
+  document.getElementById('r-title').style.display = 'none';
+  document.getElementById('r-title').value = '';
+  const tsel = document.getElementById('r-title-select'); if(tsel) tsel.value = '';
+  document.getElementById('r-title').style.display = 'none';
+}
+
+function onTitleSelect(prefix) {
+  const sel = document.getElementById(prefix + '-title-select');
+  const txt = document.getElementById(prefix === 'r' ? 'r-title' : prefix + '-title');
+  if (sel.value === 'Other (please specify)') {
+    txt.style.display = 'block';
+    txt.focus();
+  } else {
+    txt.style.display = 'none';
+    if (prefix === 'r') txt.value = sel.value;
+  }
+}
+
+// ─── PRIVACY MODAL ───────────────────────────────────────────────────────────
+function openPrivacyModal() {
+  document.getElementById('privacy-modal').classList.add('open');
+}
+function closePrivacyModal() {
+  document.getElementById('privacy-modal').classList.remove('open');
+}
+// Close on overlay click
+document.addEventListener('click', function(e) {
+  if (e.target.id === 'privacy-modal') closePrivacyModal();
+});
 
 // ─── SAVED TOAST ──────────────────────────────────────────────────────────────
 function showSavedToast(title) {
@@ -1307,6 +1460,7 @@ function openSpec(key) {
   ).join('');
 
   document.getElementById('role-section-title').textContent = `Roles in ${spec.label}`;
+  populateTitleDropdown(key);
   renderRoleChips(key);
 
   document.querySelectorAll('.spec-tile').forEach(t => t.classList.remove('active'));
@@ -1354,13 +1508,15 @@ function renderRoleChips(key) {
 }
 
 function renderAddRoleForm() {
-  if (currentRoles[currentSpecialism].length >= 3) return;
+  // No cap — unlimited roles per function
   document.getElementById('role-form').style.display = 'block';
   resetRoleForm();
 }
 
 function resetRoleForm() {
   document.getElementById('r-title').value = '';
+  const tsel = document.getElementById('r-title-select'); if(tsel) tsel.value = '';
+  document.getElementById('r-title').style.display = 'none';
   document.getElementById('r-salary').value = '';
   ['r_seniority','r_contract','r_exp','r_bonus','r_bonus_level','r_ote','r_car'].forEach(n => {
     document.querySelectorAll(`input[name="${n}"]`).forEach(r => { r.checked = false; r.closest('.opt-item').classList.remove('selected'); });
@@ -1386,7 +1542,11 @@ function onRemunChange() {
 function saveRole() {
   const key = currentSpecialism;
   let valid = true;
-  const title = document.getElementById('r-title').value.trim();
+  const titleSel = document.getElementById('r-title-select');
+  const titleTxt = document.getElementById('r-title');
+  const title = (titleSel.value === 'Other (please specify)' || titleSel.value === '')
+    ? titleTxt.value.trim()
+    : titleSel.value;
   const salary = document.getElementById('r-salary').value;
   const seniority = document.querySelector('input[name="r_seniority"]:checked');
   const contract = document.querySelector('input[name="r_contract"]:checked');
@@ -1415,13 +1575,10 @@ function saveRole() {
 
   renderRoleChips(key);
   showSavedToast(title);
-
-  if (currentRoles[key].length >= 3) {
-    document.getElementById('role-form').style.display = 'none';
-    document.getElementById('spec-nav-btns').style.display = 'flex';
-  } else {
-    resetRoleForm();
-  }
+  // Always return to tiles after saving — user can re-open to add more
+  document.getElementById('role-form').style.display = 'none';
+  document.getElementById('spec-nav-btns').style.display = 'flex';
+  specNext();
 }
 
 function skipRoles() {
@@ -1560,7 +1717,10 @@ async function submitFinal(skipContact) {
       rewardChallenges: [...document.querySelectorAll('input[name="reward_ch"]:checked')].map(r => r.value).join(', '),
       salaryIncrease: (document.querySelector('input[name="salary_increase"]:checked') || {}).value || '',
       salaryExpect: (document.querySelector('input[name="salary_expect"]:checked') || {}).value || '',
-      benefits: [...document.querySelectorAll('input[name="benefits"]:checked')].map(r => r.value).join(', ')
+      benefits: [...document.querySelectorAll('input[name="benefits"]:checked')].map(r => r.value).join(', '),
+      payReviewMonth: (document.querySelector('input[name="pay_review_month"]:checked') || {}).value || '',
+      flexWorking: [...document.querySelectorAll('input[name="flex_working"]:checked')].map(r => r.value).join(', '),
+      hybridDays: (document.querySelector('input[name="hybrid_days"]:checked') || {}).value || ''
     }
   };
 
@@ -1630,7 +1790,7 @@ function downloadCSV() {
     'Role Specialism','Role Function','Job Title','Seniority','Salary Band',
     'Contract','Experience','Bonus','Bonus Level','Remuneration','OTE','Car Allowance',
     'Hiring Activity','Hiring Functions','Hardest to Hire',
-    'Reward Challenges','Salary Increase Past','Salary Increase Future','Benefits'
+    'Reward Challenges','Salary Increase Past','Salary Increase Future','Benefits','Pay Review Month','Flexible Working','Hybrid Days'
   ];
 
   const rows = [headers];
@@ -1643,7 +1803,7 @@ function downloadCSV() {
     ];
     const mkt = [
       s.market.hiringActivity, s.market.hiringFunctions, s.market.hardestHire,
-      s.market.rewardChallenges, s.market.salaryIncrease, s.market.salaryExpect, s.market.benefits
+      s.market.rewardChallenges, s.market.salaryIncrease, s.market.salaryExpect, s.market.benefits, s.market.payReviewMonth || '', s.market.flexWorking || '', s.market.hybridDays || ''
     ];
 
     if (!s.roles.length) {
