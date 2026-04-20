@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oxfordshire Salary Guide 2026 — Employer Survey</title>
+<title>Oxfordshire Salary Guide 2026 — Allen Associates Employer Survey</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1a1a2e;
-    --teal: #0d7c6e;
-    --teal-light: #e8f5f3;
-    --teal-mid: #b2dcd7;
-    --gold: #c9933a;
+    --ink: #1A2B4A;
+    --teal: #C8473A;
+    --teal-light: #FDF0EE;
+    --teal-mid: #F0B8B2;
+    --gold: #E8793A;
     --muted: #6b7280;
     --border: #e2e8e6;
     --bg: #f9faf9;
@@ -486,7 +486,7 @@
 <div class="app-shell">
 
   <header class="survey-header">
-    <div class="subtitle">Employer Survey · 2026</div>
+    <div class="subtitle">Allen Associates · Employer Survey · 2026</div>
     <h1>Oxfordshire Salary Guide</h1>
   </header>
 
@@ -512,7 +512,7 @@
       <h3>How we use your data</h3>
 
       <p><strong>Who is collecting this data?</strong><br>
-      This survey is conducted by <strong>[CLIENT NAME]</strong>, [registered address], [company number]. For data queries contact <a href="mailto:[CLIENT EMAIL]">[CLIENT EMAIL]</a>.</p>
+      This survey is conducted by <strong>Allen Associates</strong>, [registered address], [company number]. For data queries contact <a href="mailto:willc@thehragency.co.uk">willc@thehragency.co.uk</a>.</p>
 
       <p><strong>What we collect</strong><br>
       This survey collects two types of information:</p>
@@ -531,9 +531,9 @@
       Aggregated, anonymised findings will be published in the Oxfordshire Salary Guide 2026. No individual organisation's data will be identifiable in the published report. Your contact details will not be shared with any third party.</p>
 
       <p><strong>Your rights</strong><br>
-      Under UK GDPR you have the right to access, correct, or request deletion of your personal data at any time. To exercise these rights, contact <a href="mailto:[CLIENT EMAIL]">[CLIENT EMAIL]</a>. You also have the right to lodge a complaint with the Information Commissioner's Office (ICO) at <a href="https://ico.org.uk" target="_blank">ico.org.uk</a>.</p>
+      Under UK GDPR you have the right to access, correct, or request deletion of your personal data at any time. To exercise these rights, contact <a href="mailto:willc@thehragency.co.uk">willc@thehragency.co.uk</a>. You also have the right to lodge a complaint with the Information Commissioner's Office (ICO) at <a href="https://ico.org.uk" target="_blank">ico.org.uk</a>.</p>
 
-      <p style="margin-bottom:0;"><a href="[PRIVACY POLICY URL]" target="_blank">Read the full privacy policy →</a></p>
+      <p style="margin-bottom:0;"><a href="https://www.allen-associates.co.uk/privacy-policy" target="_blank">Read the full privacy policy →</a></p>
     </div>
 
     <label class="consent-row" id="consent-row" onclick="toggleConsent()">
@@ -548,7 +548,7 @@
     </div>
 
     <div class="footer-links" style="padding-top:1.5rem;">
-      <a href="[PRIVACY POLICY URL]" target="_blank">Privacy policy</a> &nbsp;·&nbsp;
+      <a href="https://www.allen-associates.co.uk/privacy-policy" target="_blank">Privacy policy</a> &nbsp;·&nbsp;
       <a href="https://ico.org.uk" target="_blank">ICO</a>
     </div>
 
@@ -1048,7 +1048,7 @@
         <label class="q-label">Email address</label>
         <input type="email" id="contact-email" placeholder="you@organisation.com" autocomplete="email">
         <div class="field-error" id="err-email"></div>
-        <div style="font-size:0.78rem; color:var(--muted); margin-top:0.4rem;">Used only to send you the report. You can request deletion at any time — see the <a href="[PRIVACY POLICY URL]" target="_blank" style="color:var(--teal);">privacy notice</a>.</div>
+        <div style="font-size:0.78rem; color:var(--muted); margin-top:0.4rem;">Used only to send you the report. You can request deletion at any time — see the <a href="https://www.allen-associates.co.uk/privacy-policy" target="_blank" style="color:var(--teal);">privacy notice</a>.</div>
       </div>
 
     </div>
@@ -1076,13 +1076,13 @@
     </div>
 
     <div class="retention-notice">
-      <strong>Your data:</strong> Survey responses are retained until 31 December 2027, then securely deleted. Contact details (if provided) are deleted once the report has been distributed. To request early deletion or access your data, contact <a href="mailto:[CLIENT EMAIL]" style="color:var(--teal);">[CLIENT EMAIL]</a>.
+      <strong>Your data:</strong> Survey responses are retained until 31 December 2027, then securely deleted. Contact details (if provided) are deleted once the report has been distributed. To request early deletion or access your data, contact <a href="mailto:willc@thehragency.co.uk" style="color:var(--teal);">willc@thehragency.co.uk</a>.
     </div>
 
     <p style="font-size:0.85rem; color:var(--muted); margin-top:1.5rem; line-height:1.7;">If you'd like to discuss any of the findings or explore how your organisation benchmarks against the local market, the team would be glad to help.</p>
 
     <div class="footer-links">
-      <a href="[PRIVACY POLICY URL]" target="_blank">Privacy policy</a> &nbsp;·&nbsp;
+      <a href="https://www.allen-associates.co.uk/privacy-policy" target="_blank">Privacy policy</a> &nbsp;·&nbsp;
       <a href="https://ico.org.uk" target="_blank">ICO</a>
     </div>
 
@@ -1571,10 +1571,9 @@ async function submitFinal(skipContact) {
         contact: hasContact ? `${contactName} | ${contactOrg} | ${email}` : 'Not provided'
       })
     });
-    const fsJson = await fsRes.json();
-    alert('Formspree response: ' + JSON.stringify(fsJson));
+    await fsRes.json();
   } catch(e) {
-    alert('Formspree error: ' + e.message);
+    // Silent fail — data already saved to localStorage
   }
 
   document.getElementById('thanks-role-count').textContent = allRoles.length;
@@ -1693,4 +1692,3 @@ document.addEventListener('change', function(e) {
 
 </body>
 </html>
-
