@@ -512,7 +512,7 @@
       <h3>How we use your data</h3>
 
       <p><strong>Who is collecting this data?</strong><br>
-      This survey is conducted by <strong>Allen Associates</strong>, [registered address], [company number]. For data queries contact <a href="mailto:willc@thehragency.co.uk">willc@thehragency.co.uk</a>.</p>
+      This survey is conducted by <strong>[CLIENT NAME]</strong>, [registered address], [company number]. For data queries contact <a href="mailto:[CLIENT EMAIL]">[CLIENT EMAIL]</a>.</p>
 
       <p><strong>What we collect</strong><br>
       This survey collects two types of information:</p>
@@ -531,9 +531,9 @@
       Aggregated, anonymised findings will be published in the Oxfordshire Salary Guide 2026. No individual organisation's data will be identifiable in the published report. Your contact details will not be shared with any third party.</p>
 
       <p><strong>Your rights</strong><br>
-      Under UK GDPR you have the right to access, correct, or request deletion of your personal data at any time. To exercise these rights, contact <a href="mailto:willc@thehragency.co.uk">willc@thehragency.co.uk</a>. You also have the right to lodge a complaint with the Information Commissioner's Office (ICO) at <a href="https://ico.org.uk" target="_blank">ico.org.uk</a>.</p>
+      Under UK GDPR you have the right to access, correct, or request deletion of your personal data at any time. To exercise these rights, contact <a href="mailto:[CLIENT EMAIL]">[CLIENT EMAIL]</a>. You also have the right to lodge a complaint with the Information Commissioner's Office (ICO) at <a href="https://ico.org.uk" target="_blank">ico.org.uk</a>.</p>
 
-      <p style="margin-bottom:0;"><a href="https://www.allen-associates.co.uk/privacy-policy" target="_blank">Read the full privacy policy →</a></p>
+      <p style="margin-bottom:0;"><a href="[PRIVACY POLICY URL]" target="_blank">Read the full privacy policy →</a></p>
     </div>
 
     <label class="consent-row" id="consent-row" onclick="toggleConsent()">
@@ -548,7 +548,7 @@
     </div>
 
     <div class="footer-links" style="padding-top:1.5rem;">
-      <a href="https://www.allen-associates.co.uk/privacy-policy" target="_blank">Privacy policy</a> &nbsp;·&nbsp;
+      <a href="[PRIVACY POLICY URL]" target="_blank">Privacy policy</a> &nbsp;·&nbsp;
       <a href="https://ico.org.uk" target="_blank">ICO</a>
     </div>
 
@@ -1048,7 +1048,7 @@
         <label class="q-label">Email address</label>
         <input type="email" id="contact-email" placeholder="you@organisation.com" autocomplete="email">
         <div class="field-error" id="err-email"></div>
-        <div style="font-size:0.78rem; color:var(--muted); margin-top:0.4rem;">Used only to send you the report. You can request deletion at any time — see the <a href="https://www.allen-associates.co.uk/privacy-policy" target="_blank" style="color:var(--teal);">privacy notice</a>.</div>
+        <div style="font-size:0.78rem; color:var(--muted); margin-top:0.4rem;">Used only to send you the report. You can request deletion at any time — see the <a href="[PRIVACY POLICY URL]" target="_blank" style="color:var(--teal);">privacy notice</a>.</div>
       </div>
 
     </div>
@@ -1076,13 +1076,13 @@
     </div>
 
     <div class="retention-notice">
-      <strong>Your data:</strong> Survey responses are retained until 31 December 2027, then securely deleted. Contact details (if provided) are deleted once the report has been distributed. To request early deletion or access your data, contact <a href="mailto:willc@thehragency.co.uk" style="color:var(--teal);">willc@thehragency.co.uk</a>.
+      <strong>Your data:</strong> Survey responses are retained until 31 December 2027, then securely deleted. Contact details (if provided) are deleted once the report has been distributed. To request early deletion or access your data, contact <a href="mailto:[CLIENT EMAIL]" style="color:var(--teal);">[CLIENT EMAIL]</a>.
     </div>
 
     <p style="font-size:0.85rem; color:var(--muted); margin-top:1.5rem; line-height:1.7;">If you'd like to discuss any of the findings or explore how your organisation benchmarks against the local market, the team would be glad to help.</p>
 
     <div class="footer-links">
-      <a href="https://www.allen-associates.co.uk/privacy-policy" target="_blank">Privacy policy</a> &nbsp;·&nbsp;
+      <a href="[PRIVACY POLICY URL]" target="_blank">Privacy policy</a> &nbsp;·&nbsp;
       <a href="https://ico.org.uk" target="_blank">ICO</a>
     </div>
 
@@ -1124,7 +1124,7 @@
 
 <script>
 // ─── CONFIG — change these before deploying ──────────────────────────────────
-const ADMIN_PASSWORD = 'Hopethisw0rks';  // Change this before going live
+const ADMIN_PASSWORD = 'OxSalary2026';  // Change this before going live
 // ─────────────────────────────────────────────────────────────────────────────
 
 let submissions = [];       // Survey data — NO contact details
@@ -1587,7 +1587,7 @@ async function submitFinal(skipContact) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
-        access_key: '8cd5d006-9376-41bd-84d0-718e892569a4',
+        access_key: 'd90a50f7-98ca-450f-933e-0a21cdf54469',
         subject: `Salary Survey submission — ${currentOrgData.sector}, ${currentOrgData.location} (${allRoles.length} role${allRoles.length !== 1 ? 's' : ''})`,
         message: emailBody,
         from_name: 'Oxfordshire Salary Survey 2026',
