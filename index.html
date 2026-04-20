@@ -8,10 +8,10 @@
 <style>
   :root {
     --ink: #1A2B4A;
-    --teal: #C8473A;
-    --teal-light: #FDF0EE;
-    --teal-mid: #F0B8B2;
-    --gold: #E8793A;
+    --teal: #6B4C9A;
+    --teal-light: #F3EEF9;
+    --teal-mid: #C9B3E3;
+    --gold: #9B59B6;
     --muted: #6b7280;
     --border: #e2e8e6;
     --bg: #f9faf9;
@@ -474,6 +474,29 @@
   .footer-links a { color: var(--teal); text-decoration: none; }
   .footer-links a:hover { text-decoration: underline; }
 
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #3a2460;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    opacity: 0;
+    transition: opacity 0.25s, transform 0.25s;
+    pointer-events: none;
+    z-index: 200;
+    white-space: nowrap;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
   @media (max-width: 520px) {
     .options-grid { grid-template-columns: 1fr; }
     .specialism-tiles { grid-template-columns: 1fr; }
@@ -536,8 +559,8 @@
       <p style="margin-bottom:0;"><a href="https://www.allen-associates.co.uk/privacy-policy" target="_blank">Read the full privacy policy →</a></p>
     </div>
 
-    <label class="consent-row" id="consent-row" onclick="toggleConsent()">
-      <input type="checkbox" id="consent-check" onclick="event.stopPropagation(); toggleConsent()">
+    <label class="consent-row" id="consent-row">
+      <input type="checkbox" id="consent-check">
       <span class="consent-text">I have read the privacy notice above and understand how my data will be used. I consent to my contact details (if provided) being used to send me the Oxfordshire Salary Guide 2026.</span>
     </label>
 
@@ -1093,6 +1116,9 @@
 <!-- Admin trigger — hidden in bottom corner -->
 <div class="admin-link" onclick="openAdminPrompt()">admin</div>
 
+<!-- Saved toast -->
+<div class="toast" id="saved-toast"></div>
+
 <!-- Admin panel -->
 <div class="admin-panel" id="admin-panel">
   <div class="admin-box">
@@ -1144,6 +1170,14 @@ try {
   const c = localStorage.getItem('osg_contacts');
   if (c) contacts = JSON.parse(c);
 } catch(e) {}
+
+// ─── SAVED TOAST ──────────────────────────────────────────────────────────────
+function showSavedToast(title) {
+  const toast = document.getElementById('saved-toast');
+  toast.textContent = '✓ ' + title + ' saved';
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
 
 // ─── SPECIALISM CONFIG ────────────────────────────────────────────────────────
 const SPECS = {
@@ -1201,10 +1235,14 @@ function goBack(id) { showScreen(id); }
 function toggleConsent() {
   const cb = document.getElementById('consent-check');
   const row = document.getElementById('consent-row');
-  cb.checked = !cb.checked;
   row.classList.toggle('checked', cb.checked);
   consentGiven = cb.checked;
 }
+// Also wire directly to the checkbox change event
+document.addEventListener('DOMContentLoaded', function() {
+  const cb = document.getElementById('consent-check');
+  if (cb) cb.addEventListener('change', toggleConsent);
+});
 
 function submitConsent() {
   if (!document.getElementById('consent-check').checked) {
@@ -1376,6 +1414,7 @@ function saveRole() {
   });
 
   renderRoleChips(key);
+  showSavedToast(title);
 
   if (currentRoles[key].length >= 3) {
     document.getElementById('role-form').style.display = 'none';
