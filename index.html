@@ -474,6 +474,57 @@
   .footer-links a { color: var(--teal); text-decoration: none; }
   .footer-links a:hover { text-decoration: underline; }
 
+  .privacy-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(26,26,46,0.65);
+    z-index: 500;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem 1rem;
+    overflow-y: auto;
+  }
+  .privacy-modal-overlay.open {
+    display: flex;
+  }
+  .privacy-modal-box {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+    margin: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    font-family: 'DM Sans', sans-serif;
+  }
+  .privacy-modal-box h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+  .privacy-modal-box p {
+    font-size: 0.88rem;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+  .privacy-modal-box ul {
+    font-size: 0.88rem;
+    color: var(--ink);
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+    padding-left: 1.2rem;
+  }
+  .privacy-modal-box a { color: var(--teal); }
+  .privacy-modal-box strong { color: var(--ink); }
+  .privacy-close-btn {
+    display: block;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+
   .toast {
     position: fixed;
     bottom: 2rem;
