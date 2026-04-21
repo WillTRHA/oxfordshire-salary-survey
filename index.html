@@ -1829,16 +1829,8 @@ async function submitFinal(skipContact) {
     // Silent fail — data already saved to localStorage
   }
 
-  // ── Airtable integration ──────────────────────────────────────────────────
-  // Posts each role as a separate Airtable record, plus one org-level record
-  const AIRTABLE_TOKEN = 'patSeLkFKaYP4ysws.d27b5737b3d0d461001ef08102d75c5a8b8f93f7fb81a71242693dc036ca3ac9';
-  const AIRTABLE_BASE  = 'apprq0qAinU38hutF';
-  const AIRTABLE_TABLE = 'Submissions';
-
-  const airtableHeaders = {
-    'Authorization': `Bearer ${AIRTABLE_TOKEN}`,
-    'Content-Type': 'application/json'
-  };
+  // ── Airtable via Cloudflare Worker (token stored securely on Cloudflare) ──
+  const WORKER_URL = 'https://salary-survey-airtable.willc.workers.dev/';
 
   // Build one record per role — if no roles, one record for the org
   const recordsToPost = allRoles.length > 0 ? allRoles.map((r, i) => ({
@@ -1913,20 +1905,18 @@ async function submitFinal(skipContact) {
     }
   }];
 
-  // Airtable integration — batch records
+  // Send to Airtable via Worker — silent fail, data already in Formspree
   try {
     for (let i = 0; i < recordsToPost.length; i += 10) {
       const batch = recordsToPost.slice(i, i + 10);
-      const atRes = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/${encodeURIComponent(AIRTABLE_TABLE)}`, {
+      await fetch(WORKER_URL, {
         method: 'POST',
-        headers: airtableHeaders,
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ records: batch })
       });
-      const atJson = await atRes.json();
-      alert('Airtable response: ' + JSON.stringify(atJson).substring(0, 500));
     }
   } catch(e) {
-    alert('Airtable error: ' + e.message);
+    // Silent fail — data already in Formspree and localStorage
   }
 
   document.getElementById('thanks-role-count').textContent = allRoles.length;
