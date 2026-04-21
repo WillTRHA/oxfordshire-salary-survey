@@ -1913,18 +1913,20 @@ async function submitFinal(skipContact) {
     }
   }];
 
-  // Airtable accepts max 10 records per request — batch if needed
+  // Airtable integration — batch records
   try {
     for (let i = 0; i < recordsToPost.length; i += 10) {
       const batch = recordsToPost.slice(i, i + 10);
-      await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/${encodeURIComponent(AIRTABLE_TABLE)}`, {
+      const atRes = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/${encodeURIComponent(AIRTABLE_TABLE)}`, {
         method: 'POST',
         headers: airtableHeaders,
         body: JSON.stringify({ records: batch })
       });
+      const atJson = await atRes.json();
+      alert('Airtable response: ' + JSON.stringify(atJson).substring(0, 500));
     }
   } catch(e) {
-    // Silent fail — data already in Formspree and localStorage
+    alert('Airtable error: ' + e.message);
   }
 
   document.getElementById('thanks-role-count').textContent = allRoles.length;
