@@ -1818,12 +1818,113 @@ async function submitFinal(skipContact) {
         reward_challenges: surveyRecord.market.rewardChallenges || 'None selected',
         benefits: surveyRecord.market.benefits || 'None selected',
         hardest_to_hire: surveyRecord.market.hardestHire || '—',
-        contact: hasContact ? `${contactName} | ${contactOrg} | ${email}` : 'Not provided'
+        contact: hasContact ? `${contactName} | ${contactOrg} | ${email}` : 'Not provided',
+        pay_review_month: surveyRecord.market.payReviewMonth || 'Not answered',
+        flexible_working: surveyRecord.market.flexWorking || 'Not answered',
+        hybrid_days: surveyRecord.market.hybridDays || 'Not answered'
       })
     });
     await fsRes.json();
   } catch(e) {
     // Silent fail — data already saved to localStorage
+  }
+
+  // ── Airtable integration ──────────────────────────────────────────────────
+  // Posts each role as a separate Airtable record, plus one org-level record
+  const AIRTABLE_TOKEN = 'patSeLkFKaYP4ysws.d27b5737b3d0d461001ef08102d75c5a8b8f93f7fb81a71242693dc036ca3ac9';
+  const AIRTABLE_BASE  = 'apprq0qAinU38hutF';
+  const AIRTABLE_TABLE = 'Submissions';
+
+  const airtableHeaders = {
+    'Authorization': `Bearer ${AIRTABLE_TOKEN}`,
+    'Content-Type': 'application/json'
+  };
+
+  // Build one record per role — if no roles, one record for the org
+  const recordsToPost = allRoles.length > 0 ? allRoles.map((r, i) => ({
+    fields: {
+      'Submission ID':       submissionId,
+      'Submitted':           new Date(timestamp).toLocaleString('en-GB'),
+      'Sector':              currentOrgData.sector,
+      'Headcount':           currentOrgData.headcount,
+      'Location':            currentOrgData.location,
+      'Org Position':        currentOrgData.position,
+      'PA Gateway':          specGateway.pa || 'Not completed',
+      'HR Gateway':          specGateway.hr || 'Not completed',
+      'Finance Gateway':     specGateway.finance || 'Not completed',
+      'Marketing Gateway':   specGateway.marketing || 'Not completed',
+      'Role Number':         i + 1,
+      'Function':            r.specialism.toUpperCase(),
+      'Job Title':           r.title,
+      'Seniority':           r.seniority,
+      'Salary Band':         r.salary,
+      'Contract':            r.contract,
+      'Experience':          r.experience || '',
+      'Bonus':               r.bonus || '',
+      'Bonus Level':         r.bonusLevel || '',
+      'Remuneration':        r.remuneration || '',
+      'OTE':                 r.ote || '',
+      'Car Allowance':       r.carAllowance || '',
+      'Hiring Activity':     surveyRecord.market.hiringActivity,
+      'Hiring Functions':    surveyRecord.market.hiringFunctions || '',
+      'Hardest to Hire':     surveyRecord.market.hardestHire || '',
+      'Reward Challenges':   surveyRecord.market.rewardChallenges || '',
+      'Salary Increase Past': surveyRecord.market.salaryIncrease || '',
+      'Salary Increase Future': surveyRecord.market.salaryExpect || '',
+      'Benefits':            surveyRecord.market.benefits || '',
+      'Pay Review Month':    surveyRecord.market.payReviewMonth || '',
+      'Flexible Working':    surveyRecord.market.flexWorking || '',
+      'Hybrid Days':         surveyRecord.market.hybridDays || '',
+      'Contact Name':        hasContact ? contactName : '',
+      'Contact Org':         hasContact ? contactOrg : '',
+      'Contact Email':       hasContact ? email : ''
+    }
+  })) : [{
+    fields: {
+      'Submission ID':       submissionId,
+      'Submitted':           new Date(timestamp).toLocaleString('en-GB'),
+      'Sector':              currentOrgData.sector,
+      'Headcount':           currentOrgData.headcount,
+      'Location':            currentOrgData.location,
+      'Org Position':        currentOrgData.position,
+      'PA Gateway':          specGateway.pa || 'Not completed',
+      'HR Gateway':          specGateway.hr || 'Not completed',
+      'Finance Gateway':     specGateway.finance || 'Not completed',
+      'Marketing Gateway':   specGateway.marketing || 'Not completed',
+      'Role Number':         0,
+      'Function':            '',
+      'Job Title':           '',
+      'Seniority':           '',
+      'Salary Band':         '',
+      'Contract':            '',
+      'Hiring Activity':     surveyRecord.market.hiringActivity,
+      'Hiring Functions':    surveyRecord.market.hiringFunctions || '',
+      'Hardest to Hire':     surveyRecord.market.hardestHire || '',
+      'Reward Challenges':   surveyRecord.market.rewardChallenges || '',
+      'Salary Increase Past': surveyRecord.market.salaryIncrease || '',
+      'Salary Increase Future': surveyRecord.market.salaryExpect || '',
+      'Benefits':            surveyRecord.market.benefits || '',
+      'Pay Review Month':    surveyRecord.market.payReviewMonth || '',
+      'Flexible Working':    surveyRecord.market.flexWorking || '',
+      'Hybrid Days':         surveyRecord.market.hybridDays || '',
+      'Contact Name':        hasContact ? contactName : '',
+      'Contact Org':         hasContact ? contactOrg : '',
+      'Contact Email':       hasContact ? email : ''
+    }
+  }];
+
+  // Airtable accepts max 10 records per request — batch if needed
+  try {
+    for (let i = 0; i < recordsToPost.length; i += 10) {
+      const batch = recordsToPost.slice(i, i + 10);
+      await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/${encodeURIComponent(AIRTABLE_TABLE)}`, {
+        method: 'POST',
+        headers: airtableHeaders,
+        body: JSON.stringify({ records: batch })
+      });
+    }
+  } catch(e) {
+    // Silent fail — data already in Formspree and localStorage
   }
 
   document.getElementById('thanks-role-count').textContent = allRoles.length;
