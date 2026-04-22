@@ -590,15 +590,21 @@
     </div>
 
     <div class="card" style="margin-bottom:1.2rem;">
-      <p style="font-size:0.92rem; font-weight:500; color:var(--ink); margin-bottom:0.75rem;">What does the survey cover?</p>
-      <p style="font-size:0.88rem; color:var(--muted); line-height:1.7; margin-bottom:0.5rem;">Allen Associates has been placing exceptional candidates across Oxfordshire for over 25 years. This survey covers the four functions we specialise in:</p>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-bottom:0.5rem;">
+      <p style="font-size:1rem; font-weight:500; color:var(--ink); margin-bottom:0.75rem; line-height:1.6;">Much of the salary data available to Oxfordshire businesses is either too broad, too generic, or out of date.</p>
+      <p style="font-size:0.95rem; font-weight:600; color:var(--teal); margin-bottom:0.75rem;">This survey is different.</p>
+      <p style="font-size:0.88rem; color:var(--muted); line-height:1.7; margin-bottom:0.75rem;">It is built specifically for Oxfordshire employers, capturing real, current salary data across key business functions, covering our specialist areas of expertise in:</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-bottom:0.75rem;">
         <div style="background:var(--teal-light); border:1px solid var(--teal-mid); border-radius:6px; padding:0.5rem 0.75rem; font-size:0.85rem; font-weight:500; color:var(--teal);">PA &amp; Administration</div>
         <div style="background:var(--teal-light); border:1px solid var(--teal-mid); border-radius:6px; padding:0.5rem 0.75rem; font-size:0.85rem; font-weight:500; color:var(--teal);">Human Resources</div>
         <div style="background:var(--teal-light); border:1px solid var(--teal-mid); border-radius:6px; padding:0.5rem 0.75rem; font-size:0.85rem; font-weight:500; color:var(--teal);">Finance</div>
         <div style="background:var(--teal-light); border:1px solid var(--teal-mid); border-radius:6px; padding:0.5rem 0.75rem; font-size:0.85rem; font-weight:500; color:var(--teal);">Marketing</div>
       </div>
-      <p style="font-size:0.85rem; color:var(--muted); margin-bottom:0;">Your data helps us build the most accurate picture of Oxfordshire salaries — and the full report helps you benchmark against it. The survey takes around 10 minutes to complete.</p>
+      <p style="font-size:0.88rem; color:var(--muted); line-height:1.7; margin-bottom:0.75rem;">The result will be <strong>The Oxfordshire Salary Guide</strong> — providing business leaders with insight into what's actually happening on the ground, rather than national averages or assumptions.</p>
+      <p style="font-size:0.85rem; color:var(--muted); margin-bottom:0;">The survey takes around 10 minutes to complete.</p>
+    </div>
+
+    <div class="confidentiality-box" style="background:#f5f0ff; border-color:#c9b3e3;">
+      <strong style="color:var(--teal);">🎁 £300 prize draw</strong> — Every participant who completes the survey will be automatically entered into a prize draw to win £300. A winner will be selected at random from all completed submissions once the survey closes.
     </div>
 
     <label class="consent-row" id="consent-row">
@@ -689,6 +695,18 @@
           <label class="opt-item"><input type="radio" name="org_position" value="Contracting"> Contracting</label>
         </div>
         <div class="field-error" id="err-position"></div>
+      </div>
+
+      <div class="q-block">
+        <label class="q-label"><span class="q-num">5.</span> How did you hear about this survey?</label>
+        <select id="how-heard-select">
+          <option value="">Select…</option>
+          <option>Email from Allen Associates</option>
+          <option>LinkedIn</option>
+          <option>Allen Associates website</option>
+          <option>Referred by a colleague</option>
+          <option>Other</option>
+        </select>
       </div>
 
     </div>
@@ -1143,33 +1161,50 @@
   ════════════════════════════════════════════ -->
   <div class="screen" id="screen-contact">
 
-    <h2 class="section-title">Receive the report</h2>
-    <p class="section-desc">Leave your details to receive the Oxfordshire Salary Guide 2026 when it publishes. This is entirely optional and separate from your survey responses — your contact details will never be linked to your data in the published report, and will not be shared with any third party.</p>
+    <h2 class="section-title">Almost done</h2>
+    <p class="section-desc">Please leave your details below so we can send you the Oxfordshire Salary Guide 2026 when it publishes, and enter you into the prize draw.</p>
+
+    <div class="confidentiality-box" style="background:#f5f0ff; border-color:#c9b3e3; margin-bottom:1.2rem;">
+      <strong style="color:var(--teal);">🎁 £300 prize draw</strong> — By completing this survey you are automatically entered into a prize draw to win £300. A winner will be selected at random from all completed submissions. Entering the prize draw is not conditional on agreeing to marketing contact.
+    </div>
 
     <div class="card">
 
       <div class="q-block">
-        <label class="q-label">Name</label>
+        <label class="q-label">Name <span class="q-required">*</span></label>
         <input type="text" id="contact-name" placeholder="Your name" autocomplete="name">
+        <div class="field-error" id="err-contact-name"></div>
       </div>
 
       <div class="q-block">
-        <label class="q-label">Organisation</label>
+        <label class="q-label">Organisation <span class="q-required">*</span></label>
         <input type="text" id="contact-org" placeholder="Organisation name" autocomplete="organization">
+        <div class="field-error" id="err-contact-org"></div>
       </div>
 
       <div class="q-block">
-        <label class="q-label">Email address</label>
+        <label class="q-label">Email address <span class="q-required">*</span></label>
         <input type="email" id="contact-email" placeholder="you@organisation.com" autocomplete="email">
         <div class="field-error" id="err-email"></div>
-        <div style="font-size:0.78rem; color:var(--muted); margin-top:0.4rem;">Used only to send you the report. You can request deletion at any time — see the <a href="https://www.allen-associates.co.uk/privacy-policy" target="_blank" style="color:var(--teal);">privacy notice</a>.</div>
+        <div style="font-size:0.78rem; color:var(--muted); margin-top:0.4rem;">Used only to send you the report and administer the prize draw. You can request deletion at any time — see the <a href="https://www.allen-associates.co.uk/privacy-policy" target="_blank" style="color:var(--teal);">privacy notice</a>.</div>
+      </div>
+
+      <div class="q-block" style="margin-top:1rem;">
+        <label class="q-label">Would you be happy for an Allen Associates consultant to get in touch to discuss the findings or your hiring needs?</label>
+        <span class="q-hint">This is entirely optional — your survey response and prize draw entry are not affected by your answer</span>
+        <div class="options-grid single-col">
+          <label class="opt-item"><input type="radio" name="follow_up_pref" value="Yes — please contact me by phone or email"> Yes — please contact me by phone or email</label>
+          <label class="opt-item"><input type="radio" name="follow_up_pref" value="Yes — email only please"> Yes — email only please</label>
+          <label class="opt-item"><input type="radio" name="follow_up_pref" value="No thank you"> No thank you</label>
+        </div>
       </div>
 
     </div>
 
+    <div class="form-error-banner" id="contact-error-banner">Please complete your name, organisation and email address to submit.</div>
+
     <div class="btn-row">
       <button class="btn btn-primary" onclick="submitFinal(false)">Submit survey</button>
-      <button class="btn btn-ghost" onclick="submitFinal(true)">Skip &amp; submit without contact details</button>
     </div>
 
   </div>
@@ -1362,6 +1397,14 @@ function onTitleSelect(prefix) {
     if (prefix === 'r') txt.value = sel.value;
   }
 }
+
+
+// ─── UTM SOURCE CAPTURE ───────────────────────────────────────────────────────
+function getUTMSource() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('source') || 'direct';
+}
+const utmSource = getUTMSource();
 
 // ─── PRIVACY MODAL ───────────────────────────────────────────────────────────
 function openPrivacyModal() {
@@ -1732,12 +1775,21 @@ function goToContact() {
 // ─── SCREEN 4 + FINAL SUBMIT ──────────────────────────────────────────────────
 async function submitFinal(skipContact) {
   const email = document.getElementById('contact-email').value.trim();
-  document.getElementById('err-email').textContent = '';
+  const nameVal = document.getElementById('contact-name').value.trim();
+  const orgVal = document.getElementById('contact-org').value.trim();
 
-  if (!skipContact && email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    document.getElementById('err-email').textContent = 'Please enter a valid email address';
-    return;
-  }
+  document.getElementById('err-email').textContent = '';
+  document.getElementById('err-contact-name').textContent = '';
+  document.getElementById('err-contact-org').textContent = '';
+  document.getElementById('contact-error-banner').classList.remove('visible');
+
+  let contactValid = true;
+  if (!nameVal) { document.getElementById('err-contact-name').textContent = 'Please enter your name'; contactValid = false; }
+  if (!orgVal)  { document.getElementById('err-contact-org').textContent = 'Please enter your organisation'; contactValid = false; }
+  if (!email)   { document.getElementById('err-email').textContent = 'Please enter your email address'; contactValid = false; }
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('err-email').textContent = 'Please enter a valid email address'; contactValid = false; }
+
+  if (!contactValid) { document.getElementById('contact-error-banner').classList.add('visible'); return; }
 
   // Disable submit buttons to prevent double submission
   document.querySelectorAll('#screen-contact .btn').forEach(b => b.disabled = true);
@@ -1769,19 +1821,22 @@ async function submitFinal(skipContact) {
       salaryIncrease: (document.querySelector('input[name="salary_increase"]:checked') || {}).value || '',
       salaryExpect: (document.querySelector('input[name="salary_expect"]:checked') || {}).value || '',
       benefits: [...document.querySelectorAll('input[name="benefits"]:checked')].map(r => r.value).join(', '),
+      howHeard: document.getElementById('how-heard-select') ? document.getElementById('how-heard-select').value : '',
       payReviewMonth: (document.querySelector('input[name="pay_review_month"]:checked') || {}).value || '',
       flexWorking: [...document.querySelectorAll('input[name="flex_working"]:checked')].map(r => r.value).join(', '),
-      hybridDays: (document.querySelector('input[name="hybrid_days"]:checked') || {}).value || ''
+      hybridDays: (document.querySelector('input[name="hybrid_days"]:checked') || {}).value || '',
+      source: utmSource
     }
   };
 
   // Contact data — stored separately, linked only by submission ID
   const contactName = document.getElementById('contact-name').value.trim();
+  const followUpPref = (document.querySelector('input[name="follow_up_pref"]:checked') || {}).value || '';
   const contactOrg  = document.getElementById('contact-org').value.trim();
-  const hasContact  = !skipContact && (contactName || email);
+  const hasContact  = !!(contactName || email);
 
   if (hasContact) {
-    contacts.push({ submissionId, timestamp, name: contactName, org: contactOrg, email });
+    contacts.push({ submissionId, timestamp, name: contactName, org: contactOrg, email, followUpPref, source: utmSource });
     try { localStorage.setItem('osg_contacts', JSON.stringify(contacts)); } catch(e) {}
   }
 
@@ -1869,7 +1924,10 @@ async function submitFinal(skipContact) {
       'Hybrid Days':         surveyRecord.market.hybridDays || '',
       'Contact Name':        hasContact ? contactName : '',
       'Contact Org':         hasContact ? contactOrg : '',
-      'Contact Email':       hasContact ? email : ''
+      'Contact Email':       hasContact ? email : '',
+      'Follow Up Preference': followUpPref || '',
+      'How Heard':           surveyRecord.market.howHeard || '',
+      'Source':              utmSource
     }
   })) : [{
     fields: {
@@ -1901,7 +1959,10 @@ async function submitFinal(skipContact) {
       'Hybrid Days':         surveyRecord.market.hybridDays || '',
       'Contact Name':        hasContact ? contactName : '',
       'Contact Org':         hasContact ? contactOrg : '',
-      'Contact Email':       hasContact ? email : ''
+      'Contact Email':       hasContact ? email : '',
+      'Follow Up Preference': followUpPref || '',
+      'How Heard':           surveyRecord.market.howHeard || '',
+      'Source':              utmSource
     }
   }];
 
@@ -1947,7 +2008,7 @@ function downloadCSV() {
     ];
     const mkt = [
       s.market.hiringActivity, s.market.hiringFunctions, s.market.hardestHire,
-      s.market.rewardChallenges, s.market.salaryIncrease, s.market.salaryExpect, s.market.benefits, s.market.payReviewMonth || '', s.market.flexWorking || '', s.market.hybridDays || ''
+      s.market.rewardChallenges, s.market.salaryIncrease, s.market.salaryExpect, s.market.benefits, s.market.payReviewMonth || '', s.market.flexWorking || '', s.market.hybridDays || '', s.market.howHeard || '', s.market.source || ''
     ];
 
     if (!s.roles.length) {
