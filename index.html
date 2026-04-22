@@ -1853,7 +1853,7 @@ async function submitFinal(skipContact) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
-        _subject: `Salary Survey — ${currentOrgData.sector}, ${currentOrgData.location} (${allRoles.length} role${allRoles.length !== 1 ? 's' : ''})`,
+        _subject: `Salary Survey [${utmSource}] — ${currentOrgData.sector}, ${currentOrgData.location} (${allRoles.length} role${allRoles.length !== 1 ? 's' : ''})`,
         submission_id: submissionId,
         submitted: new Date(timestamp).toLocaleString('en-GB'),
         organisation_sector: currentOrgData.sector,
