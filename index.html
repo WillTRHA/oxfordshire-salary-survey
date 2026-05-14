@@ -901,6 +901,11 @@
 
         <div class="form-error-banner" id="role-error-banner">Please complete the required fields.</div>
 
+        <div class="btn-row" id="role-add-another" style="display:none;">
+          <button class="btn btn-secondary" onclick="addAnotherRole()">+ Add another role in this function</button>
+          <button class="btn btn-ghost" onclick="doneWithFunction()">Done with this function →</button>
+        </div>
+
         <div class="btn-row">
           <button class="btn btn-primary" onclick="saveRole()">Save this role</button>
           <button class="btn btn-ghost" onclick="skipRoles()">No more roles in this function</button>
@@ -1615,8 +1620,9 @@ function onGatewayChange(key, val) {
   } else if (val.includes('Dedicated') || val.includes('Shared')) {
     roleSection.style.display = 'block';
     navBtns.style.display = 'none';
+    document.getElementById('role-add-another').style.display = 'none';
     resetRoleForm();
-    if (currentRoles[key].length < 3) renderAddRoleForm();
+    renderAddRoleForm();
   }
 }
 
@@ -1694,14 +1700,27 @@ function saveRole() {
 
   renderRoleChips(key);
   showSavedToast(title);
-  // Always return to tiles after saving — user can re-open to add more
+  // Reset form and show add-another / done buttons
+  resetRoleForm();
   document.getElementById('role-form').style.display = 'none';
-  document.getElementById('spec-nav-btns').style.display = 'flex';
+  document.getElementById('role-add-another').style.display = 'flex';
+  document.getElementById('spec-nav-btns').style.display = 'none';
+}
+
+function addAnotherRole() {
+  document.getElementById('role-add-another').style.display = 'none';
+  document.getElementById('role-form').style.display = 'block';
+  resetRoleForm();
+}
+
+function doneWithFunction() {
+  document.getElementById('role-add-another').style.display = 'none';
   specNext();
 }
 
 function skipRoles() {
   document.getElementById('role-form').style.display = 'none';
+  document.getElementById('role-add-another').style.display = 'none';
   document.getElementById('spec-nav-btns').style.display = 'flex';
 }
 
